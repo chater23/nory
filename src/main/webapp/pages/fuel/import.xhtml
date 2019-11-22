@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Carburant</title>
+</h:head>
+
+<h:body>
+		<ui:include src="stack.xhtml" />
+		<p:layout style="min-width:400px;min-height:200px;" fullPage="true">
+		    <p:layoutUnit position="center">
+		        
+		        <p:accordionPanel style="margin-top : 40px;">
+			        <p:tab title="Import les données ...">
+			            <h:panelGrid columns="2" cellpadding="5" width="100%" style="margin : 0 auto;">
+				            <h:form id="formulaire" enctype="multipart/form-data">
+				        		<p:messages id="msgs" showDetail="false" closable="true"/>
+					        	<h:inputFile value="#{fuelController.file}" label="Choisir un fichier" required="true"/>
+								<p:commandButton value="Importer" action="#{fuelController.importFuel}" ajax="false"/>
+							</h:form>
+							
+							<p:lightBox styleClass="imagebox" id="lighbox1">  
+							    <h:outputLink value="../../resources/images/canvas.png" title="CANVAS (2007 - 2000 - 97) avec une extention .xls">  
+							        <h:graphicImage name="/images/canvas.png" id="canvas" style="height: 100px; width: 150px" />  
+							    </h:outputLink>
+							</p:lightBox>
+			            </h:panelGrid>
+			        </p:tab>
+			    </p:accordionPanel>
+		    </p:layoutUnit>
+		</p:layout>
+</h:body>
+</html>

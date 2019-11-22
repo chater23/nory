@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Carburant</title>
+</h:head>
+
+<h:body>
+	<ui:include src="stack.xhtml" />
+	
+		<h:form id="formulaire" > 
+					<p:messages id="messages" showDetail="false" autoUpdate="true" closable="true" />
+	                
+	                <h:panelGrid id="données" columns="4" cellpadding="5" cellspacing="0" style="width : 70%; margin : 0 auto;">
+	                    <h:outputText value="N° Carte" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.cardNumber}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="N° Rapport" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.reportNumber}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Date" style="color : #{effects.colorLabel}"/>
+	                    <p:calendar value="#{fuelController.fuel.date_}" effect="clip" timeZone="UTC" locale="fr"/>
+	                    
+	                    <h:outputText value="Matricule" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.serial}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Km" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.km}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Litre" style="color : #{effects.colorLabel}" />
+	                    <p:inputText value="#{fuelController.fuel.liter}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Montant" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.amount}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="MNT litre" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.mntLiter}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="FRS" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.frs}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Mois" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.mounth}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="number" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.number}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Matricule22" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.serial22}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Affectation" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.assignment}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Secteur" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.sector}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Département" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.department}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Année" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.year}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Mois 2" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.mounth2}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="N° Facture" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.bill_number}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Date facture" style="color : #{effects.colorLabel}"/>
+	                    <p:calendar value="#{fuelController.fuel.bill_date}" effect="clip" timeZone="UTC" locale="fr"/>
+	                    
+	                    <h:outputText value="number" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.number}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="MNT HT" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.htAmount}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="TV FAC" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.tvBill}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="TVA à compta" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.tvaAccounting}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="HT + Porta" style="color : #{effects.colorLabel}"/>
+	                    <p:inputText value="#{fuelController.fuel.htPorta}" style="font-weight: bold"/>
+	                </h:panelGrid>
+	                
+	                <h:panelGrid id="boutton" columns="2" cellpadding="0" cellspacing="0" style="width : 15%; margin : 30px auto;">
+		                <p:commandButton value="Enregistrer" actionListener="#{fuelController.addNewFuel()}" update=":formulaire:données">
+		                   	<p:confirm header="Confirmation" message="Etes-vous sûr de vouloir ajouter ces données ?" icon="ui-icon-plus" />
+	    				</p:commandButton>
+		               	<p:commandButton value="Annuler" action="#{fuelController.resetForm()}" update=":formulaire:données"/>
+	                </h:panelGrid>
+	                
+	                <p:confirmDialog global="true" showEffect="#{effects.open}" hideEffect="#{effects.close}">
+						<p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+		</h:form>
+</h:body>
+</html>

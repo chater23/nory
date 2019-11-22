@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Authentification</title>
+	<h:outputStylesheet library="css" name="loginCSS.css"  />
+</h:head>
+
+<h:body id="body">
+	<form action="j_spring_security_check" method="post">
+		<div style="width: 221px; margin: 5% auto">
+			<table>
+				<tr>
+					<td align="center">
+						<IMG alt="Logo" src="resources/images/logo.png" style="width: 60% ; height: 90%;"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="j_username" placeholder="Login" class="form-control" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="password" name="j_password" placeholder="Mot de passe" class="form-control" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="Se connecter" class="btn"/> 
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<p:outputLabel value="${sessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message}" style="color : red;"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	
+</h:body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Carburant</title>
+</h:head>
+
+<h:body>
+	<ui:include src="stack.xhtml" />
+	
+	<h:form id="formulaire">
+	
+		<p:outputLabel value="Recherche" style="color : #{effects.colorLabel}"/>
+		<h:panelGrid id="recherche" columns="4" cellpadding="2" cellspacing="0" style="width : 70%; margin : 0 auto;">
+			<p:inputText value="#{fuelController.fuel.serial}" 		placeholder="Matricule" />
+			<p:inputText value="#{fuelController.fuel.serial22}" 	placeholder="Matricule22" />
+			<p:inputText value="#{fuelController.fuel.reportNumber}" placeholder="Numéro de rapport" />
+			<p:inputText value="#{fuelController.fuel.frs}" 		placeholder="FRS" />
+			<p:inputText value="#{fuelController.fuel.mounth}" 		placeholder="Mois" />
+			<p:inputText value="#{fuelController.fuel.mounth2}" 	placeholder="Mois 2" />
+			<p:inputText value="#{fuelController.fuel.year}" 		placeholder="Année" />
+			<p:inputText value="#{fuelController.fuel.number}" 		placeholder="Numéro" />
+			<p:inputText value="#{fuelController.fuel.assignment}" 	placeholder="Affectation" />
+			<p:inputText value="#{fuelController.fuel.sector}" 		placeholder="Mois 2" />
+			<p:inputText value="#{fuelController.fuel.department}" 	placeholder="Département" />
+			<p:inputText value="#{fuelController.fuel.bill_number}" placeholder="Numéro de facture" />
+			<p:calendar  value="#{fuelController.fuel.bill_date}" 	placeholder="Date facture" locale="fr" timeZone="UTC" />
+			<p:commandButton value="Rechercher" action="#{fuelController.searchFuel()}" update=":formulaire:scrol"/>
+		</h:panelGrid> 
+		<HR/>
+		<BR/>
+	
+		<p:outputLabel value="Résultat" style="color : #{effects.colorLabel}"/>
+	    <p:dataScroller id="scrol" value="#{fuelController.listeOfFuels()}" var="fuel" chunkSize="10" mode="inline" scrollHeight="500">
+	        <f:facet name="header">
+	            Faites défiler vers le bas pour charger plus de lignes ...
+	        </f:facet>
+	 
+	        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+	            <p:graphicImage name="images/fuel.png" width="50"/> 
+	            
+	            <p:outputPanel>
+	                <h:panelGrid id="données" columns="10" cellpadding="5" cellspacing="0">
+	                    <h:outputText value="N° Carte" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.cardNumber}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="N° Rapport" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.reportNumber}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Date" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.date_}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Matricule" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.serial}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Km" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.km}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Litre" style="color : #{effects.colorLabel}" />
+	                    <h:outputText value="#{fuel.liter}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Montant" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.amount}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="MNT litre" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.mntLiter}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="FRS" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.frs}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Mois" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.mounth}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="number" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.number}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Matricule22" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.serial22}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Affectation" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.assignment}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Secteur" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.sector}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Département" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.department}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Année" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.year}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Mois 2" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.mounth2}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="N° Facture" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.bill_number}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="Date facture" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.bill_date}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="number" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.number}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="MNT HT" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.htAmount}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="TV FAC" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.tvBill}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="TVA à compta" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.tvaAccounting}" style="font-weight: bold"/>
+	                    
+	                    <h:outputText value="HT + Porta" style="color : #{effects.colorLabel}"/>
+	                    <h:outputText value="#{fuel.htPorta}" style="font-weight: bold"/>
+	                    
+	                </h:panelGrid>
+	                <HR/>
+	            </p:outputPanel>
+	        </h:panelGrid>
+	    </p:dataScroller>
+	    
+	</h:form>
+	
+</h:body>
+</html>

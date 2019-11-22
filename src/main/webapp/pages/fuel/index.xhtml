@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Accueil</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p style="text-align: left;">
+			<p:outputLabel value="Bienvenue M. #{userConnected.user.username}" />
+		</p>
+		<h:panelGrid columns="1" style="width: 300px; margin:100px auto;" cellpadding="5">
+			<p:outputLabel for="liste" value="Liste des fonctionalités du système" style="width :300px;"/>
+			<p:selectOneMenu id="liste" value="#{redirection.outCome}" var="t" filter="true" filterMatchMode="contains" style="width : 280px;">
+				<f:selectItem itemValue="fuel" itemLabel="Carburant"/>
+			</p:selectOneMenu>
+			<p:commandButton value="Entrer" action="#{redirection.start}" icon="fa-arrow-circle-right" style="width : 280px;"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
