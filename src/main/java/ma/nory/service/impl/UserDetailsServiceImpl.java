@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import ma.nory.dao.IUserDao;
-import ma.nory.models.Role;
-import ma.nory.models.User;
-import ma.nory.models.UserStatus;
-import ma.nory.service.IUserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import ma.nory.dao.IUserDao;
+import ma.nory.models.Role;
+import ma.nory.models.User;
+import ma.nory.models.UserStatus;
+import ma.nory.service.IUserService;
 	
 @SuppressWarnings("deprecation")
 @Service("userDetailsService")
@@ -44,7 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
 			//Let's populate user roles
 			Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 			for(Role role : user.getRoles()){
-				authorities.add(new GrantedAuthorityImpl(role.getRoleName()));
+				authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
 			}
 			
 			//Now let's create Spring Security User object
