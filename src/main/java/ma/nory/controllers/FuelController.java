@@ -25,7 +25,7 @@ public class FuelController {
 	private Fuel fuel;
 	private boolean value = true;
 	private Part file;
-	
+	//public constructor
 	//Constructeurs
 	public FuelController() {
 		fuel = new Fuel();
