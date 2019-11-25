@@ -11,14 +11,15 @@ public class RedirectionController {
 	@ManagedProperty(value = "#{outCome}")
 	private String outCome;
 
-	public RedirectionController() {}
-
-	//Redirection to the start page
-	public String start() {
-		return outCome+"?faces-redirect=true";
+	public RedirectionController() {
 	}
 
-	//GETTERS AND SETTERS
+	// Redirection to the start page
+	public String start() {
+		return outCome + "?faces-redirect=true";
+	}
+
+	// GETTERS AND SETTERS
 	public String getOutCome() {
 		return outCome;
 	}
