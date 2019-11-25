@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @SessionScoped
 public class UserConnectedController {
 
-	@ManagedProperty(value="#{userDetailsService}")
+	@ManagedProperty(value = "#{userDetailsService}")
 	private IUserService iUserService;
 
 	@ManagedProperty(value = "#{user}")

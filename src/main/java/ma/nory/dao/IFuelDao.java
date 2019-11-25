@@ -13,9 +13,9 @@ public interface IFuelDao {
 	public abstract void deleteFuel(Fuel fuel);
 
 	public abstract Fuel findFuel(Integer id);
-	
+
 	public abstract List<Fuel> findFuel(Fuel fuel);
-	
+
 	public abstract List<Fuel> getAllFuel();
 
 }
