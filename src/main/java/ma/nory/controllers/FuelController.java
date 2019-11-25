@@ -25,13 +25,15 @@ public class FuelController {
 	private Fuel fuel;
 	private boolean value = true;
 	private Part file;
+
 	//public constructor
+
 	//Constructeurs
 	public FuelController() {
 		fuel = new Fuel();
 	}
 	
-	//Méthode que j'appele dans le tableau de la page fuel.xhtml
+	//MÃ©thode que j'appele dans le tableau de la page fuel.xhtml
 	public List<Fuel> listeOfFuels(){
 		fuels.clear();
 		if(isValue())
@@ -42,13 +44,13 @@ public class FuelController {
 		return fuels;
 	}
 	
-	//Modifier la valeur de VALUE pour faire le teste dans la méthode : listeOfFuels
+	//Modifier la valeur de VALUE pour faire le teste dans la mÃ©thode : listeOfFuels
 		public boolean searchFuel(){
 			setValue(false);
 			return value;
 		}
 	
-	//Modifier la valeur de VALUE pour faire le teste dans la méthode : listeOfFuels
+	//Modifier la valeur de VALUE pour faire le teste dans la mÃ©thode : listeOfFuels
 	public boolean getAllFuels(){
 		setValue(true);
 		return value;
@@ -57,15 +59,15 @@ public class FuelController {
 	//Ajouter un nouveau carburant
 	public void addNewFuel(){
 		if(fuel.getMounth()>12 | fuel.getMounth()<1 ){
-			AlertMessages.warning("Le (mois) doit être compris entre 1 et 12");
+			AlertMessages.warning("Le (mois) doit Ãªtre compris entre 1 et 12");
 			return;
 		}
 		if(fuel.getMounth2()>12 | fuel.getMounth2()<1 ){
-			AlertMessages.warning("Le (mois2) doit être compris entre 1 et 12");
+			AlertMessages.warning("Le (mois2) doit Ãªtre compris entre 1 et 12");
 			return;
 		}
 		iFuelService.saveFuel(fuel);
-		AlertMessages.information("Les données on été ajouté avec succès.");
+		AlertMessages.information("Les donnÃ©es on Ã©tÃ© ajoutÃ© avec succÃ¨s.");
 		fuel = new Fuel();
 	}
 	
