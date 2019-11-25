@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("fuelService")
-public class FuelServiceImpl implements IFuelService  {
+public class FuelServiceImpl implements IFuelService {
 
 	@Autowired
 	private IFuelDao fuelDao;
